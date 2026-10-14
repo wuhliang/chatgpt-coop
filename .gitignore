@@ -1,0 +1,7 @@
+inbox.json
+state.json
+msg-*.txt
+screenshot-insert.jpg
+*.log
+.DS_Store
+Thumbs.db
