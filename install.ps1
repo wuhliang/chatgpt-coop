@@ -35,8 +35,9 @@ if ($Repo -eq 'CHANGEME/chatgpt-coop') {
     Fail "Repo is not configured. Pass -Repo '<user>/<repo>' or edit the default inside install.ps1."
 }
 
-if (-not (Test-Path $skillsRoot) -and $Dest -like "*\.workbuddy\skills\*") { New-Item -ItemType Directory -Path $skillsRoot -Force | Out-Null }
 $dest = $Dest
+$skillsRoot = Split-Path -Parent $dest
+if (-not (Test-Path $skillsRoot)) { New-Item -ItemType Directory -Path $skillsRoot -Force | Out-Null }
 
 $apiUrl = "https://api.github.com/repos/$Repo/zipball/$Branch"
 $tmpRoot = Join-Path $env:TEMP ("chatgpt-coop-install-" + [guid]::NewGuid().ToString('N').Substring(0, 8))
